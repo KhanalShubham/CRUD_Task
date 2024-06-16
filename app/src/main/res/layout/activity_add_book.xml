@@ -20,28 +20,32 @@
         android:layout_gravity="center"
         android:hint="Click on image to browse"
         android:layout_height="wrap_content"/>
+
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter Name"
-        android:inputType="text" />
+        android:hint="Enter Name of Book"
+        android:inputType="text"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/editTextDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Desc"
-        android:inputType="text" />
+        android:hint="Enter Desc of Book"
+        android:inputType="text"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/editTextPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter price"
-        android:inputType="number" />
+        android:hint="Enter price of book"
+        android:inputType="number"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/button"

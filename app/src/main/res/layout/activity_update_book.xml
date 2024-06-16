@@ -20,23 +20,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Enter Name"
         android:inputType="text"
-        android:hint="Enter Name" />
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/editTextDescUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Enter Desc"
         android:inputType="text"
-        android:hint="Enter Desc" />
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/editTextPriceUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Enter price"
         android:inputType="number"
-        android:hint="Enter price" />
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/buttonUpdate"
