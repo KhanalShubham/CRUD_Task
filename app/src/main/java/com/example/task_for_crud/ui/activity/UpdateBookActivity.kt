@@ -14,10 +14,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.crud_34a.R
 import com.example.crud_34a.databinding.ActivityUpdateProductBinding
+import com.example.crud_34a.model.BookModel
 import com.example.crud_34a.model.ProductModel
 import com.example.crud_34a.repository.ProductRepositoryImpl
 import com.example.crud_34a.utils.ImageUtils
 import com.example.crud_34a.viewmodel.ProductViewModel
+import com.example.task_for_crud.R
 import com.example.task_for_crud.databinding.ActivityAddBookBinding
 import com.example.task_for_crud.model.BookModel
 import com.example.task_for_crud.repository.BookRepositoryImpl
@@ -68,9 +70,9 @@ class UpdateBookActivity : AppCompatActivity() {
 
         var book : BookModel? = intent.getParcelableExtra("book")
 
-        updateBookBinding.editTextNameUpdate.setText(book?.bookName)
-        updateBookBinding.editTextPriceUpdate.setText(book?.bookPrice.toString())
-        updateBookBinding.editTextDescUpdate.setText(book?.bookDesc)
+        updateBookBinding.editTextName.setText(book?.bookName)
+        updateBookBinding.editTextPrice.setText(book?.bookPrice.toString())
+        updateBookBinding.editTextDesc.setText(book?.bookDesc)
 
         Picasso.get().load(book?.url).into(updateBookBinding.imageUpdate)
 
