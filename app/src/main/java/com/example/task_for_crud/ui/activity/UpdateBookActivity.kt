@@ -1,30 +1,19 @@
-package com.example.crud_34a.ui.activity
-
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.crud_34a.R
-import com.example.crud_34a.databinding.ActivityUpdateProductBinding
 import com.example.crud_34a.model.BookModel
-import com.example.crud_34a.model.ProductModel
-import com.example.crud_34a.repository.ProductRepositoryImpl
-import com.example.crud_34a.utils.ImageUtils
-import com.example.crud_34a.viewmodel.ProductViewModel
 import com.example.task_for_crud.R
 import com.example.task_for_crud.databinding.ActivityAddBookBinding
-import com.example.task_for_crud.model.BookModel
-import com.example.task_for_crud.repository.BookRepositoryImpl
+import com.example.task_for_crud.utils.Imageutils
 import com.example.task_for_crud.viewmodel.BookViewModel
 import com.squareup.picasso.Picasso
+
 
 class UpdateBookActivity : AppCompatActivity() {
     lateinit var updateBookBinding: ActivityAddBookBinding
@@ -33,7 +22,7 @@ class UpdateBookActivity : AppCompatActivity() {
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     var imageUri: Uri? = null
 
-    lateinit var imageUtils: ImageUtils
+    lateinit var imageUtils: Imageutils
     lateinit var bookViewModel: BookViewModel
 
     override fun onRequestPermissionsResult(
@@ -56,7 +45,7 @@ class UpdateBookActivity : AppCompatActivity() {
         updateBookBinding=ActivityAddBookBinding.inflate(layoutInflater)
         setContentView(updateBookBinding.root)
 
-        imageUtils = ImageUtils(this)
+        imageUtils = Imageutils(this)
 
         var repo = BookRepositoryImpl()
         bookViewModel = BookViewModel(repo)
