@@ -1,34 +1,21 @@
 package com.example.crud_34a.ui.activity
 
+import BookRepositoryImpl
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.crud_34a.R
-import com.example.crud_34a.databinding.ActivityAddProductBinding
-import com.example.crud_34a.model.ProductModel
-import com.example.crud_34a.repository.ProductRepositoryImpl
-import com.example.crud_34a.utils.ImageUtils
-import com.example.crud_34a.viewmodel.ProductViewModel
+import com.example.crud_34a.model.BookModel
+import com.example.task_for_crud.R
 import com.example.task_for_crud.databinding.ActivityAddBookBinding
-import com.example.task_for_crud.model.BookModel
-import com.example.task_for_crud.repository.BookRepositoryImpl
+import com.example.task_for_crud.utils.Imageutils
 import com.example.task_for_crud.viewmodel.BookViewModel
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 import java.util.UUID
 
@@ -39,7 +26,7 @@ class AddBookActivity : AppCompatActivity() {
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     var imageUri: Uri? = null
 
-    lateinit var imageUtils: ImageUtils
+    lateinit var imageUtils: Imageutils
 
     lateinit var bookViewModel: BookViewModel
 
@@ -64,7 +51,7 @@ class AddBookActivity : AppCompatActivity() {
         addBookBinding=ActivityAddBookBinding.inflate(layoutInflater)
         setContentView(addBookBinding.root)
 
-        imageUtils = ImageUtils(this)
+        imageUtils = Imageutils(this)
         imageUtils.registerActivity { url ->
             url.let {
                 imageUri = it

@@ -37,7 +37,7 @@ class BookViewModel (val repository: BookRepository) : ViewModel(){
     var loadingState = MutableLiveData<Boolean>()
         get() = _loadingState
 
-    fun fetchAllProducts(){
+    fun fetchAllBooks(){
         _loadingState.value = true
         repository.getAllBooks { books, success,message ->
             if(books!=null){

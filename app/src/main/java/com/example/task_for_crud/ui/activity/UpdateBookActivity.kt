@@ -2,21 +2,25 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.crud_34a.model.BookModel
 import com.example.task_for_crud.R
 import com.example.task_for_crud.databinding.ActivityAddBookBinding
+import com.example.task_for_crud.databinding.ActivityUpdateBookBinding
 import com.example.task_for_crud.utils.Imageutils
 import com.example.task_for_crud.viewmodel.BookViewModel
 import com.squareup.picasso.Picasso
 
 
 class UpdateBookActivity : AppCompatActivity() {
-    lateinit var updateBookBinding: ActivityAddBookBinding
+    lateinit var updateBookBinding: ActivityUpdateBookBinding
     var id = ""
     var imageName = ""
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
@@ -42,7 +46,7 @@ class UpdateBookActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        updateBookBinding=ActivityAddBookBinding.inflate(layoutInflater)
+        updateBookBinding=ActivityUpdateBookBinding.inflate(layoutInflater)
         setContentView(updateBookBinding.root)
 
         imageUtils = Imageutils(this)
@@ -59,9 +63,9 @@ class UpdateBookActivity : AppCompatActivity() {
 
         var book : BookModel? = intent.getParcelableExtra("book")
 
-        updateBookBinding.editTextName.setText(book?.bookName)
-        updateBookBinding.editTextPrice.setText(book?.bookPrice.toString())
-        updateBookBinding.editTextDesc.setText(book?.bookDesc)
+        updateBookBinding.editTextNameUpdate.setText(book?.bookName)
+        updateBookBinding.editTextPriceUpdate.setText(book?.bookPrice.toString())
+        updateBookBinding.editTextDescUpdate.setText(book?.bookDesc)
 
         Picasso.get().load(book?.url).into(updateBookBinding.imageUpdate)
 
@@ -90,7 +94,7 @@ class UpdateBookActivity : AppCompatActivity() {
         imageUri?.let {
             bookViewModel.uploadImages(imageName,it) { success, imageUrl, message ->
                 if(success){
-                    updateProduct(imageUrl.toString())
+                    updateBook(imageUrl.toString())
                 }else{
                     Toast.makeText(applicationContext,message,Toast.LENGTH_SHORT).show()
                 }

@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
-class Imageutils {
+class Imageutils (val activity: AppCompatActivity){
 
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
 

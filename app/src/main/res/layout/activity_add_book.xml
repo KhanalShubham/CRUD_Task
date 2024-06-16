@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.activity.AddBookActivity">
+    tools:context="com.example.crud_34a.ui.activity.AddBookActivity">
 
     <ImageView
         android:layout_width="150dp"

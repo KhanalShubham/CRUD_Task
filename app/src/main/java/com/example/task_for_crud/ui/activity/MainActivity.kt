@@ -1,5 +1,6 @@
 package com.example.task_for_crud.ui.activity
 
+import BookRepositoryImpl
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -11,10 +12,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.crud_34a.adapter.BookAdapter
+import com.example.crud_34a.ui.activity.AddBookActivity
 import com.example.task_for_crud.R
-import com.example.task_for_crud.adapter.BookAdapter
 import com.example.task_for_crud.databinding.ActivityMainBinding
-import com.example.task_for_crud.repository.BookRepositoryImpl
 import com.example.task_for_crud.viewmodel.BookViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                var id = bookAdapter.getBookID(viewHolder.adapterPosition)
+                var id = bookAdapter.getBookId(viewHolder.adapterPosition)
                 var imageName = bookAdapter.getImageName(viewHolder.adapterPosition)
 
                 bookViewModel.deleteBooks(id){

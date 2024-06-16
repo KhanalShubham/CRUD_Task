@@ -50,7 +50,7 @@ class BookRepositoryImpl : BookRepository {
 
 
 
-    fun getBooks(callback: (List<BookModel>?, Boolean, String?) -> Unit) {
+    override fun getAllBooks(callback: (List<BookModel>?, Boolean, String?) -> Unit) {
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var bookList = mutableListOf<BookModel>()
