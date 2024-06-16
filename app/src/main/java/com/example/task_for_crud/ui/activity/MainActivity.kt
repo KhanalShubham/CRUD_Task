@@ -12,15 +12,18 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.task_for_crud.R
+import com.example.task_for_crud.adapter.BookAdapter
 import com.example.task_for_crud.databinding.ActivityMainBinding
+import com.example.task_for_crud.repository.BookRepositoryImpl
+import com.example.task_for_crud.viewmodel.BookViewModel
 
 class MainActivity : AppCompatActivity() {
     lateinit var mainBinding: ActivityMainBinding
 
 
-    lateinit var productAdapter: ProductAdapter
+    lateinit var bookAdapter: BookAdapter
 
-    lateinit var productViewModel: ProductViewModel
+    lateinit var bookViewModel: BookViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,19 +32,19 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
-        productAdapter= ProductAdapter(this@MainActivity,ArrayList())
+        bookAdapter= BookAdapter(this@MainActivity,ArrayList())
 
-        var repo = ProductRepositoryImpl()
-        productViewModel = ProductViewModel(repo)
+        var repo = BookRepositoryImpl()
+        bookViewModel = BookViewModel(repo)
 
-        productViewModel.fetchAllProducts()
+        bookViewModel.fetchAllBooks()
 
-        productViewModel.productList.observe(this){
-            it?.let { products ->
-                productAdapter.updateData(products)
+        bookViewModel.bookList.observe(this){
+            it?.let { books ->
+                bookAdapter.updateData(books)
             }
         }
-        productViewModel.loadingState.observe(this){loadingState->
+        bookViewModel.loadingState.observe(this){loadingState->
             if(loadingState){
                 mainBinding.progressMain.visibility = View.VISIBLE
             }else{
@@ -54,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
         mainBinding.recyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = productAdapter
+            adapter = bookAdapter
         }
 
 
@@ -69,13 +72,13 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                var id = productAdapter.getProductID(viewHolder.adapterPosition)
-                var imageName = productAdapter.getImageName(viewHolder.adapterPosition)
+                var id = bookAdapter.getBookID(viewHolder.adapterPosition)
+                var imageName = bookAdapter.getImageName(viewHolder.adapterPosition)
 
-                productViewModel.deleteProducts(id){
+                bookViewModel.deleteBooks(id){
                         success,message->
                     if(success){
-                        productViewModel.deleteImage(imageName){
+                        bookViewModel.deleteImage(imageName){
                                 success,message->
                         }
                         Toast.makeText(applicationContext,message, Toast.LENGTH_LONG).show()
@@ -91,7 +94,7 @@ class MainActivity : AppCompatActivity() {
 
         mainBinding.floatingActionButton.setOnClickListener {
             var intent = Intent(this@MainActivity,
-                AddProductActivity::class.java)
+                AddBookActivity::class.java)
             startActivity(intent)
         }
 
