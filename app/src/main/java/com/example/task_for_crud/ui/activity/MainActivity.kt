@@ -1,4 +1,4 @@
-package com.example.task_for_crud
+package com.example.task_for_crud.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.task_for_crud.R
 import com.example.task_for_crud.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
