@@ -11,19 +11,19 @@ import com.google.firebase.storage.StorageReference
 
 class BookRepositoryImpl : BookRepository {
     var firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
-    var ref: DatabaseReference = firebaseDatabase.reference.child("products")
+    var ref: DatabaseReference = firebaseDatabase.reference.child("books")
 
     var firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
-    var storageReference: StorageReference = firebaseStorage.reference.child("products")
+    var storageReference: StorageReference = firebaseStorage.reference.child("books")
     override fun addBooks(bookModel: BookModel, callback: (Boolean, String?) -> Unit) {
         var id = ref.push().key.toString()
         bookModel.id = id
 
         ref.child(id).setValue(bookModel).addOnCompleteListener {
             if (it.isSuccessful) {
-                callback(true, "Product added successfully")
+                callback(true, "Book added successfully")
             } else {
-                callback(false, "Unable to add Products")
+                callback(false, "Unable to add books")
             }
         }
     }
@@ -34,7 +34,7 @@ class BookRepositoryImpl : BookRepository {
         callback: (Boolean, String?, String?) -> Unit
     ) {
 //
-        var imageReference = storageReference.child("products").child(imageName)
+        var imageReference = storageReference.child("books").child(imageName)
         imageUri.let { url ->
             imageReference.putFile(url).addOnSuccessListener {
                 imageReference.downloadUrl.addOnSuccessListener { url ->

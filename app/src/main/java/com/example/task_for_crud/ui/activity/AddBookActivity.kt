@@ -92,7 +92,7 @@ class AddBookActivity : AppCompatActivity() {
         imageUri?.let {
             bookViewModel.uploadImages(imageName,it) { success, imageUrl,message ->
                 if(success){
-                    addProduct(imageUrl,imageName)
+                    addBook(imageUrl,imageName)
                 }else{
                     Toast.makeText(applicationContext,message,Toast.LENGTH_SHORT).show()
                 }
@@ -100,12 +100,12 @@ class AddBookActivity : AppCompatActivity() {
         }
     }
 
-    fun addProduct(url: String?, imageName: String?) {
-        var productName: String = addBookBinding.editTextName.text.toString()
+    fun addBook(url: String?, imageName: String?) {
+        var bookName: String = addBookBinding.editTextName.text.toString()
         var desc: String = addBookBinding.editTextDesc.text.toString()
         var price: Int = addBookBinding.editTextPrice.text.toString().toInt()
 
-        var data = BookModel("",productName,price,desc,
+        var data = BookModel("",bookName,price,desc,
             url.toString(),imageName.toString())
 
         bookViewModel.addBooks(data){

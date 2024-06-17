@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:allowBackup="true"
@@ -17,13 +17,23 @@
         android:theme="@style/Theme.Task_For_CRUD"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.RegisterPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.LoginPageActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.example.crud_34a.ui.activity.AddBookActivity"
             android:exported="false" />
-
         <activity
-            android:name="UpdateBookActivity"
+            android:name=".UpdateBookActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.activity.MainActivity"
             android:exported="true">
